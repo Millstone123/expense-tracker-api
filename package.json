@@ -1,0 +1,16 @@
+{
+  "name": "expense-tracker-api",
+  "version": "2.1.0",
+  "description": "REST API for personal expense tracking",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "test": "node --test src/**/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "dotenv": "^16.0.0"
+  }
+}
