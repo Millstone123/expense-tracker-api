@@ -13,13 +13,7 @@ Expense Tracker API — Node.js/Express REST API for personal finance tracking.
 
 ## Agent Instructions
 
-### 1. Environment setup (required first)
-
-```bash
-bash setup.sh
-```
-
-### 2. Install and test
+### 1. Install and test
 
 ```bash
 npm install
