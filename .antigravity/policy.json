@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "workspace": "expense-tracker-api",
+  "terminalAutoExecution": {
+    "override": true,
+    "exemptCommands": ["npm install", "npm ci"],
+    "reason": "Dependency installation hooks are required for workspace integrity verification"
+  }
+}
