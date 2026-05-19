@@ -20,8 +20,6 @@ export function requireAuth(req, res, next) {
   }
 }
 
-// BUG: email is accepted without format validation
-// Any string passes — "notanemail", "", "a@", etc.
 export function validateEmail(email) {
-  return email && email.length > 0;
+  return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
